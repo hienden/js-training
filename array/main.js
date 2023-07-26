@@ -48,25 +48,25 @@ console.log("--------------3");
 
 // Bài tập 4: Sắp xếp mảng
 // Viết một hàm có tên "sortArray" nhận vào một mảng các số nguyên và trả về một mảng mới đã được sắp xếp theo thứ tự tăng dần.
-function compareNumbers(a, b) {
-  return a - b;
+function sortArray(arr4) {
+  return arr4.sort((a, b) => a - b);
 }
+
 const arr4 = [3, 1, 4, 2, 5];
 console.log(arr4);
-
-const new_arr = arr4.sort(compareNumbers);
-console.log(new_arr);
+console.log(sortArray(arr4));
 
 console.log("--------------4");
 
 // Bài tập 5: Tìm các số lớn hơn x
 // Viết một hàm có tên "findNumbersGreaterThanX" nhận vào một mảng các số nguyên và một số x. Hàm này sẽ trả về một mảng mới chứa các số trong mảng ban đầu mà lớn hơn x.
-let array = [1, 2, 3, 4, 5];
+function findNumbersGreaterThanX(arr, x) {
+  return arr.filter((num) => num > x);
+}
+const array = [1, 2, 3, 4, 5];
 console.log(array);
-let found = array.filter(function (element) {
-  return element > 2;
-});
-console.log(found);
+
+console.log(findNumbersGreaterThanX(array, 2));
 
 console.log("--------------5");
 
@@ -123,21 +123,24 @@ console.log("--------------9");
 
 // Bài tập 10: Tìm các số nguyên tố
 // Viết một hàm có tên "findPrimeNumbers" nhận vào một mảng các số nguyên và trả về một mảng mới chỉ chứa các số nguyên tố từ mảng ban đầu.
-function findPrimeNumbers(arr, isprime) {
+function findPrimeNumbers(arr) {
   let result = [];
-  for (let i = 0; i < arr.length; i++) {
-    if (isprime(arr[i]) == 1) result.push(arr[i]);
-  }
-  return result;
-}
-function isprime(n) {
-  let flag = 1;
+  return arr.filter((num) => isPrime(num));
 
-  if (n < 2) return (flag = 0);
+  //   for (let i = 0; i < arr.length; i++) {
+  //     if (isprime(arr[i]) == 1) result.push(arr[i]);
+  //   }
+  //   return result;
+  // }
+}
+function isPrime(n) {
+  let flag = true;
+
+  if (n < 2) return false;
   let i = 2;
   while (i < n) {
     if (n % i == 0) {
-      flag = 0;
+      flag = false;
       break;
     }
     i++;
@@ -147,17 +150,17 @@ function isprime(n) {
 let array10 = [11, 13, 1, 2, 3, 4, 2, 6, 7, 8, 9, 10];
 console.log(array10);
 
-console.log(findPrimeNumbers(array10, isprime));
+console.log(findPrimeNumbers(array10));
 
 console.log("--------------10");
 
 // Bài tập 11: Sử dụng map() để nhân đôi mảng
 // Viết một hàm có tên "doubleArray" nhận vào một mảng số nguyên và sử dụng phương thức map() để nhân đôi giá trị của mỗi phần tử trong mảng và trả về một mảng mới.
 function doubleArray(arr) {
-  const new_arr = [];
-  arr.map((item) => {
-    return [item * 2];
+  let newarr = arr.map((item) => {
+    return item * 2;
   });
+  return newarr;
 }
 const arr11 = [1, 2, 3, 4, 5];
 console.log(arr11);
@@ -179,13 +182,7 @@ console.log("--------------12");
 // Bài tập 13: Sử dụng find() để tìm số đầu tiên thỏa mãn điều kiện
 // Viết một hàm có tên "findFirstEvenNumber" nhận vào một mảng số nguyên. Hãy sử dụng phương thức find() để tìm số chẵn đầu tiên trong mảng và trả về giá trị đó. Nếu không tìm thấy số chẵn, hàm sẽ trả về undefined.
 function findFirstEvenNumber(arr) {
-  return arr.find(FirstEvenNumber);
-  arr.find(FirstEvenNumber);
-}
-function FirstEvenNumber(num) {
-  if (num % 2 == 0) {
-    return num;
-  } else undefined;
+  return arr.find((num) => num % 2 === 0);
 }
 const arr13 = [1, 8, 3, 11, 5];
 console.log(arr13);
@@ -196,12 +193,10 @@ console.log("--------------13");
 // Bài tập 14: Sử dụng some() để kiểm tra xem có số lẻ nào trong mảng không
 // Viết một hàm có tên "hasOddNumber" nhận vào một mảng số nguyên. Hãy sử dụng phương thức some() để kiểm tra xem có số lẻ nào trong mảng không và trả về true nếu có, ngược lại trả về false.
 function hasOddNumber(arr) {
-  return arr.some(OddNumber);
+  return arr.some((num) => num % 2 !== 0);
 }
-function OddNumber(num) {
-  return num % 2 != 0;
-}
-const arr14 = [0, 2, 4, 6, 8, 10];
+
+const arr14 = [0, 1, 4, 6, 8, 10];
 console.log(arr14);
 console.log(hasOddNumber(arr14));
 
@@ -210,10 +205,7 @@ console.log("--------------14");
 // Bài tập 15: Sử dụng every() để kiểm tra xem tất cả số đều là số dương
 // Viết một hàm có tên "areAllPositiveNumbers" nhận vào một mảng số nguyên. Hãy sử dụng phương thức every() để kiểm tra xem tất cả các số trong mảng có là số dương không và trả về true nếu đúng, ngược lại trả về false.
 function areAllPositiveNumbers(arr) {
-  return arr.every(PositiveNumbers);
-}
-function PositiveNumbers(num) {
-  return num > 0;
+  return arr.every((num) => num > 0);
 }
 const arr15 = [1, 2, 3, 4, -5];
 console.log(arr15);
