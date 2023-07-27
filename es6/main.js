@@ -1,117 +1,90 @@
-// Bài tập 1: Tạo đối tượng
-// 1. Tạo một đối tượng có tên "person" biểu diễn thông tin cá nhân của bạn, bao gồm các thuộc tính: "name" (tên), "age" (tuổi), "gender" (giới tính), và "occupation" (nghề nghiệp).
-const person = {
-  name: "hien",
-  age: "27",
-  gender: "nu",
-  occupation: "CTHDQT",
-};
-console.log(person);
+// Bài tập 1: Biến và khai báo
+// 1. Khai báo một biến let với tên "message" và gán giá trị "Hello, ES6!" vào biến đó.
+// 2. Khai báo một hằng số const có tên "PI" và gán giá trị là 3.14159.
+let message = "Hello, ES6!";
+const PI = 3.14159;
 
 console.log("--------------1");
 
-// Bài tập 2: Truy xuất thuộc tính
-// 1. Sử dụng đối tượng "person" từ bài tập trước để truy xuất và in ra màn hình giá trị thuộc tính "name" và "age".
-console.log(`${person.name} ${person.age} `);
+// Bài tập 2: Arrow function
+// 1. Viết một arrow function có tên "add" nhận vào hai tham số và trả về tổng của chúng.
+// 2. Viết một arrow function có tên "double" nhận vào một số và trả về số đó nhân đôi.
+
+const add = (a, b) => a + b;
+console.log(add(1, 2));
+
+const double = (a) => a * 2;
+console.log(double(2));
 
 console.log("--------------2");
 
-// Bài tập 3: Thay đổi giá trị thuộc tính
-// 1. Thay đổi giá trị của thuộc tính "occupation" trong đối tượng "person" thành nghề nghiệp mới của bạn.
-person.occupation = "TGD";
-console.log(person);
+// Bài tập 3: Template literals
+// 1. Viết một hàm có tên "greeting" nhận vào một tên và trả về chuỗi chào mừng "Hello, [Tên]!" bằng cách sử dụng template literals.
+function greeting(name) {
+  return `Hello, ${name} `;
+}
+console.log(greeting("Anna"));
 
 console.log("--------------3");
 
-// Bài tập 4: Thêm thuộc tính mới
-// 1. Thêm một thuộc tính "email" vào đối tượng "person" để đại diện cho địa chỉ email của bạn.
-person.email = "hoanghien110397@gmail.com";
-console.log(person);
+// Bài tập 4: Default parameters
+// 1. Viết một hàm có tên "sayHello" nhận vào một tham số "name" và mặc định "name" là "Guest". Hàm này sẽ trả về chuỗi chào mừng "Hello, [name]!".
+
+function sayHello(name = "Guest") {
+  return `Hello, ${name} `;
+}
+console.log(sayHello());
 
 console.log("--------------4");
 
-// Bài tập 5: Xóa thuộc tính
-// 1. Xóa thuộc tính "gender" khỏi đối tượng "person".
-delete person.gender;
-console.log(person);
+// Bài tập 5: Destructuring
+// 1. Cho một mảng ["apple", "banana", "orange"], sử dụng destructuring để lấy ra các giá trị "apple" và "banana" vào hai biến riêng biệt.
+let fruit = ["apple", "banana", "orange"];
+let [a, b, c] = fruit;
+console.log(a, c);
 
 console.log("--------------5");
 
-// Bài tập 6: Duyệt qua tất cả các thuộc tính
-// 1. Viết một hàm có tên "printAllProperties" nhận vào một đối tượng và in ra tất cả các thuộc tính và giá trị của đối tượng đó.
-function printAllProperties(object1) {
-  return object1;
-}
-const object1 = {
-  type: "Fiat",
-  model: "500",
-  color: "white",
-};
-console.log(printAllProperties(object1));
+// Bài tập 6: Spread operator
+// 1. Cho một mảng ["cat", "dog"] và một mảng khác ["lion", "tiger"]. Sử dụng spread operator để kết hợp cả hai mảng lại thành một mảng mới.
+let animal1 = ["cat", "dog"];
+let animal2 = ["lion", "tiger"];
+let animal = [...animal1, ...animal2];
+console.log(animal);
 
 console.log("--------------6");
 
-// Bài tập 7: Đối tượng lồng nhau
-// 1. Tạo một đối tượng "address" biểu diễn địa chỉ của bạn với các thuộc tính: "street" (đường phố), "city" (thành phố) và "zip" (mã bưu điện).
-//  Sau đó, thêm đối tượng "address" vào đối tượng "person" từ bài tập trước.
-
-const address = {
-  street: "nguyen xien",
-  city: "ha noi",
-  zip: 118000,
-};
-
-console.log(Object.assign(person, address));
+// Bài tập 7: Classes
+// 1. Tạo một lớp có tên "Person" với constructor nhận vào "name" và "age".
+// Lớp này có một phương thức "introduce" trả về chuỗi giới thiệu "Xin chào, tôi là [name] và tôi [age] tuổi."
+class Person {
+  constructor(name, age) {
+    this.name = name;
+    this.age = age;
+  }
+  instroduce() {
+    return `Xin chào, tôi là ${this.name} và tôi ${this.age} tuổi.`;
+  }
+}
+const instro = new Person("Anna", 19);
+console.log(instro.instroduce());
 
 console.log("--------------7");
 
-// Bài tập 8: Đếm số thuộc tính
-// 1. Viết một hàm có tên "countProperties" nhận vào một đối tượng và trả về số lượng thuộc tính của đối tượng đó.
-function countProperties(car) {
-  return Object.keys(car).length;
+// Bài tập 8: Promises
+// 1. Viết một hàm "fetchData" sử dụng Fetch API để lấy dữ liệu từ một URL được cung cấp.
+// Hàm này trả về một Promise với dữ liệu lấy được hoặc thông báo lỗi nếu xảy ra lỗi trong quá trình lấy dữ liệu.
+function fetchData() {
+  fetch("https://reqres.in/api/users?page=1")
+    .then(function (res) {
+      return res.json();
+    })
+    .then(function (user) {
+      console.log(user);
+    })
+    .catch(function (err) {
+      console.log(error);
+    });
 }
-const cars = {
-  make: "Ford",
-  model: "Mustang",
-  year: 1969,
-};
-
-console.log(countProperties(cars));
-// let i = 0;
-// let count = 0;
-// while (i < keycars.length) {
-//   count++;
-//   i++;
-// }
-// console.log(count);
-
+fetchData();
 console.log("--------------8");
-
-// Bài tập 9: Duyệt qua tất cả các giá trị
-// 1. Viết một hàm có tên "printAllValues" nhận vào một đối tượng và in ra tất cả các giá trị của các thuộc tính trong đối tượng đó.
-function printAllValues() {}
-const myComputer = {
-  type: "laptop",
-  brand: "Sony",
-  os: "Windows 7",
-  graphicCard: "NVIDIA",
-};
-const keycars = Object.values(myComputer);
-console.log(keycars);
-console.log("--------------9");
-
-// Bài tập 10: Kiểm tra tính tồn tại
-// 1. Viết một hàm có tên "hasProperty" nhận vào một đối tượng và một chuỗi (tên thuộc tính).
-// Hàm này sẽ kiểm tra xem thuộc tính có tồn tại trong đối tượng hay không và trả về true nếu có, ngược lại trả về false.
-
-function hasProperty(object, str) {
-  return object.hasOwnProperty(str);
-}
-const student = {
-  name: "abc",
-  age: 20,
-  city: "Hyderabad",
-};
-const str = "city";
-console.log(hasProperty(student, str));
-console.log("--------------10");
