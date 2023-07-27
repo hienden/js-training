@@ -40,18 +40,31 @@ console.log("--------------5");
 // Bài tập 6: Duyệt qua tất cả các thuộc tính
 // 1. Viết một hàm có tên "printAllProperties" nhận vào một đối tượng và in ra tất cả các thuộc tính và giá trị của đối tượng đó.
 
-function printAllProperties(obj) {
-  Object.keys(obj).forEach((key) => {
-    console.log(key);
-    console.log(obj[key]);
-  });
+// function printAllProperties(obj) {
+//   Object.keys(obj).forEach((key) => {
+//     console.log(key);
+//     console.log(obj[key]);
+//   });
+// }
+// const object = {
+//   a: 1,
+//   b: 2,
+//   c: 3,
+// };
+// printAllProperties(object);
+
+function printAllProperties(object1) {
+  console.log(Object.entries(object1));
+  for (let [key, value] of Object.entries(object1)) {
+    console.log(key + ": " + value);
+  }
 }
-const object = {
-  a: 1,
-  b: 2,
-  c: 3,
+const object1 = {
+  type: "Fiat",
+  model: "500",
+  color: "white",
 };
-printAllProperties(object);
+printAllProperties(object1);
 
 console.log("--------------6");
 
@@ -94,7 +107,7 @@ console.log("--------------8");
 // Bài tập 9: Duyệt qua tất cả các giá trị
 // 1. Viết một hàm có tên "printAllValues" nhận vào một đối tượng và in ra tất cả các giá trị của các thuộc tính trong đối tượng đó.
 function printAllValues(object) {
-  keycars = Object.values(myComputer);
+  const keycars = Object.values(myComputer);
   return keycars;
 }
 const myComputer = {
@@ -111,14 +124,14 @@ console.log("--------------9");
 // 1. Viết một hàm có tên "hasProperty" nhận vào một đối tượng và một chuỗi (tên thuộc tính).
 // Hàm này sẽ kiểm tra xem thuộc tính có tồn tại trong đối tượng hay không và trả về true nếu có, ngược lại trả về false.
 
-function hasProperty(object, str) {
-  return object.hasOwnProperty(str);
+function hasProperty(object, key) {
+  return object.hasOwnProperty(key);
 }
 const student = {
   name: "abc",
   age: 20,
   city: "Hyderabad",
 };
-const str = "city";
-console.log(hasProperty(student, str));
+const key = "city";
+console.log(hasProperty(student, key));
 console.log("--------------10");
