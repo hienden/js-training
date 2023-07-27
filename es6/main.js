@@ -39,19 +39,15 @@ console.log("--------------5");
 
 // Bài tập 6: Duyệt qua tất cả các thuộc tính
 // 1. Viết một hàm có tên "printAllProperties" nhận vào một đối tượng và in ra tất cả các thuộc tính và giá trị của đối tượng đó.
-
-function printAllProperties(obj) {
-  Object.keys(obj).forEach((key) => {
-    console.log(key);
-    console.log(obj[key]);
-  });
+function printAllProperties(object1) {
+  return object1;
 }
-const object = {
-  a: 1,
-  b: 2,
-  c: 3,
+const object1 = {
+  type: "Fiat",
+  model: "500",
+  color: "white",
 };
-printAllProperties(object);
+console.log(printAllProperties(object1));
 
 console.log("--------------6");
 
@@ -64,8 +60,8 @@ const address = {
   city: "ha noi",
   zip: 118000,
 };
-person.address = address;
-console.log(person);
+
+console.log(Object.assign(person, address));
 
 console.log("--------------7");
 
@@ -93,18 +89,15 @@ console.log("--------------8");
 
 // Bài tập 9: Duyệt qua tất cả các giá trị
 // 1. Viết một hàm có tên "printAllValues" nhận vào một đối tượng và in ra tất cả các giá trị của các thuộc tính trong đối tượng đó.
-function printAllValues(object) {
-  keycars = Object.values(myComputer);
-  return keycars;
-}
+function printAllValues() {}
 const myComputer = {
   type: "laptop",
   brand: "Sony",
   os: "Windows 7",
   graphicCard: "NVIDIA",
 };
-console.log(printAllValues(myComputer));
-
+const keycars = Object.values(myComputer);
+console.log(keycars);
 console.log("--------------9");
 
 // Bài tập 10: Kiểm tra tính tồn tại
