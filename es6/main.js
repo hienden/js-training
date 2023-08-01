@@ -74,17 +74,39 @@ console.log("--------------7");
 // Bài tập 8: Promises
 // 1. Viết một hàm "fetchData" sử dụng Fetch API để lấy dữ liệu từ một URL được cung cấp.
 // Hàm này trả về một Promise với dữ liệu lấy được hoặc thông báo lỗi nếu xảy ra lỗi trong quá trình lấy dữ liệu.
+// function fetchData() {
+//   fetch("https://reqres.in/api/users?page=1")
+//     .then(function (res) {
+//       return res.json();
+//     })
+//     .then(function (user) {
+//       console.log(user);
+//     })
+//     .catch(function (err) {
+//       console.log(error);
+//     });
+// }
+// fetchData();
 function fetchData() {
-  fetch("https://reqres.in/api/users?page=1")
-    .then(function (res) {
-      return res.json();
-    })
-    .then(function (user) {
-      console.log(user);
-    })
-    .catch(function (err) {
-      console.log(error);
-    });
+  return new Promise((resolve, reject) => {
+    fetch("https://reqres.in/api/users?page=1")
+      .then(function (res) {
+        return res.json();
+      })
+      .then(function (user) {
+        resolve(user);
+      })
+      .catch(function (err) {
+        reject(err);
+      });
+  });
 }
-fetchData();
+
+fetchData()
+  .then((data) => {
+    console.log(data);
+  })
+  .catch((err) => {
+    console.log(err);
+  });
 console.log("--------------8");

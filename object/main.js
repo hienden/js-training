@@ -135,3 +135,29 @@ const student = {
 const key = "city";
 console.log(hasProperty(student, key));
 console.log("--------------10");
+console.log("--------------10");
+console.log("--------------10");
+console.log("--------------10");
+console.log("--------------10");
+
+const teacher = {
+  firstName: "Minh",
+  lastName: "Thao",
+  getFullName() {
+    console.log(`${this.firstName} ${this.lastName}`);
+  },
+};
+
+// function getFullName() {
+//   console.log("abc");
+// }
+const button = document.querySelector("button");
+// button.onclick = teacher.getFullName;
+// console.log(getFullName);
+button.onclick = teacher.getFullName.bind(teacher);
+// button.onclick = teacher.getFullName();
+// button.onclick = function () {
+//   teacher.getFullName();
+// };
+
+// button.onclick = teacher.getFullName.bind(teacher);
