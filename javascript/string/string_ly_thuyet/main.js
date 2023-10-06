@@ -21,12 +21,15 @@ console.log(d.toLowerCase()); // in ra chuỗi viết thường
 console.log("   abc edf   ");
 console.log("   abc edf   ".trim()); // cắt bỏ khoảng trắng 2 đầu của chuỗi
 console.log("abc".concat("edf")); // nối chuỗi
-console.log(d.substring(0, 5)); // Lorem => vị trí các kí tự trong 1 chuỗi sẽ bắt đầu tù 0 (index)
+console.log(d.substring(0, 5)); // Lorem (vị trí các kí tự trong 1 chuỗi sẽ bắt đầu tù 0 (index)
 
 console.log(d.indexOf("ipsum")); // trả về index, vị trí đầu tiên của 1 chuỗi hoặc 1 kí tự cần tìm kiếm
-console.log(d.includes("dolor")); // trả về true nếu chuỗi được tìm thấy
+console.log(d.includes("dolor", 13)); // trả về true nếu chuỗi được tìm thấy
 console.log(d.startsWith("Lorem")); // trả về true nếu tìm thấy từ bắt đầu  là Lorem
 console.log(d.endsWith("elitt")); // trả về true nếu tìm thấy từ cuối cùng  là elitt
+
+// Bài tập 6: Loại bỏ khoảng trắng thừa
+// Viết một hàm có tên "trimWhitespace" nhận vào một chuỗi và trả về chuỗi mới đã loại bỏ các khoảng trắng thừa ở đầu và cuối chuỗi.
 
 function trimWhitespace(str) {
   const string1 = str.trim();
@@ -38,3 +41,6 @@ console.log(result1);
 
 const result2 = trimWhitespace("  This is a sample sentence.   ");
 console.log(result2);
+
+console.log("--------------------------------------");
+console.log("--------------------------------------");

@@ -25,8 +25,8 @@ let z = (0.2 + 0.1).toFixed(1); // là tròn sau dấu . một chữ số
 console.log(z);
 
 // Adding Numbers and strings
-// Phép cộng ưu tiên nối chuỗi nếu 1 trong 1 biến được gán kiểu chuỗi.
-// Các phép còn lại thì cộng như phép toán bình thường
+// Phép cộng ưu tiên nối chuỗi nếu 1 trong các biến được gán kiểu chuỗi.
+// Các phép còn lại thì tính toán như phép toán bình thường
 const a = 100;
 const b = "120";
 

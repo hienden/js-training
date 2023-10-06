@@ -238,32 +238,32 @@
 // // // // 4. Toán từ ++ -- với tiền tố & hậu tố
 // let x = 10;
 
-// const z = ++x; // 10
+// const z = ++x;
 // console.log(z);
 // console.log(x);
 // // z = 11
 // // x = 11
-// const w = ++x; // 10
+// const w = ++x;
 // console.log(w);
 // console.log(x);
 // // w = 12
 // // x = 12
-// const q = x++; // 11
+// const q = x++;
 // console.log(q);
 // console.log(x);
 // // q = 12
 // // x = 13
-// const e = --x; // 10
+// const e = --x;
 // console.log(e);
 // console.log(x);
 // // e = 12
 // // x = 12
-// const t = x++; // 11
+// const t = x++;
 // console.log(t);
 // console.log(x);
 // // t = 12
 // // x = 13
-// const y = x--; //  9
+// const y = x--;
 // console.log(y);
 // console.log(x);
 
@@ -368,28 +368,28 @@
 //   });
 
 // bắt lỗi dùng try & catch
-// const getNewTodo = async (id) => {
-//   try {
-//     let response = await fetch(
-//       `https://jsonplaceholder.typicode.com/todos/${id}`
-//     );
-//     if (response && response.status !== 200) {
-//       throw new Error("Something wrongs with status code: " + response.status);
-//       //reject
-//     }
-//     let data = await response.json();
-//     return data; // resolve
-//   } catch (e) {
-//     console.log(">>> check catch error: ", e.message);
-//   }
-// };
-// getNewTodo("abc")
-//   .then((data) => {
-//     console.log(">>> check get data", data);
-//   })
-//   .catch((err) => {
-//     console.log(">>> check error: ", err.message);
-//   });
+const getNewTodo = async (id) => {
+  try {
+    let response = await fetch(
+      `https://jsonplaceholder.typicode.com/todos/${id}`
+    );
+    if (response && response.status !== 200) {
+      throw new Error("Something wrongs with status code: " + response.status);
+      //reject
+    }
+    let data = await response.json();
+    return data; // resolve
+  } catch (e) {
+    console.log(">>> check catch error: ", e.message);
+  }
+};
+getNewTodo("abc")
+  .then((data) => {
+    console.log(">>> check get data", data);
+  })
+  .catch((err) => {
+    console.log(">>> check error: ", err.message);
+  });
 
 // // // // 5. primitive và reference: Kiểu dữ liệu tham trị và tham chiếu
 // là 2 cách để truyền dữ liệu cho biến
