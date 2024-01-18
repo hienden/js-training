@@ -25,7 +25,7 @@ const renderPost = (postList) => {
     return `<li id="${item.id}">
         <h4>${item.title}</h4>
         <p>${item.body}</p>
-        <button onclick="handleDelete'('${item.id}')">xoa</button>
+        <button onclick="handleDelete('${item.id}')">xoa</button>
         <button onclick="handleEdit('${item.id}')">sua</button>
       </li>`;
   });
@@ -67,7 +67,14 @@ addPostButton.addEventListener("click", function (e) {
       })
         .then((res) => res.json())
         .then((data) => {
-          console.log(data);
+          const postItem = document.getElementById(`${currentId}`);
+          postItem.querySelector("h4").textContent = data.title;
+          postItem.querySelector("p").textContent = data.body;
+          // console.log(data);
+          titleInputElement.value = " ";
+          descInputElement.value = " ";
+          addPostButton.textContent = "Add post";
+          currentId = "";
         })
     : fetch(URL, {
         method: "POST",
@@ -78,13 +85,23 @@ addPostButton.addEventListener("click", function (e) {
       })
         .then((res) => res.json())
         .then((data) => {
-          console.log(data);
+          const post = `<li id="${data.id}">
+          <h4>${data.title}</h4>
+          <p>${data.body}</p>
+          <button onclick="handleDelete('${data.id}')">xoa</button>
+          <button onclick="handleEdit('${data.id}')">sua</button>
+        </li>`;
+
+          postListElement.firstElementChild.insertAdjacentHTML(
+            "beforebegin",
+            post
+          );
         });
 });
 
 // PUT API: cập nhật 1 BAI VIET CU THE THEO ID
 function handleEdit(id) {
-  const postItem = document.getElementById(`${id}`);
+  const postItem = document.getElementById(id);
   const title = postItem.querySelector("h4").textContent;
   const desc = postItem.querySelector("p").textContent;
 
@@ -96,15 +113,18 @@ function handleEdit(id) {
 }
 
 // DELETE API : xóa post
-// function handleXoa(id) {
-//   fetch(URL + "/" + id, {
-//     method: "DELETE",
-//     headers: {
-//       "Content-Type": "application/json",
-//     },
-//   })
-//     .then((res) => res.json())
-//     .then((data) => {
-//       // renderPost(data);
-//     });
-// }
+function handleDelete(id) {
+  fetch(URL + "/" + id, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      console.log(data);
+      const post = document.getElementById(id);
+      post.remove();
+      console.log(post);
+    });
+}
