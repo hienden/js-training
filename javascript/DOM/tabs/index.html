@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>tabs</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <section class="about">
+      <h3>About</h3>
+      <p style="text-align: center">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+      </p>
+      <div class="wrapper">
+        <div class="image">
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/01/Forest_near_Pilsko%2C_Beskid_%C5%BBywiecki.jpg/1200px-Forest_near_Pilsko%2C_Beskid_%C5%BBywiecki.jpg?20211125132824"
+            alt=""
+          />
+        </div>
+
+        <div class="tab-container">
+          <div class="tab-nav">
+            <ul>
+              <li class="tablink" onclick="openContent(event, 'history')">
+                History
+              </li>
+              <li
+                class="tablink"
+                onclick="openContent(event, 'vision')"
+                id="defaultOpen"
+              >
+                Vision
+              </li>
+              <li class="tablink" onclick="openContent(event, 'goals')">
+                Goals
+              </li>
+            </ul>
+          </div>
+          <div class="tab-content" id="history">
+            <h4>History</h4>
+            <p>
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Pariatur
+              velit commodi consequuntur harum similique repellat aut quae
+              temporibus fugiat impedit quisquam reiciendis nobis nam
+              praesentium, sed suscipit natus mollitia quos! Doloribus facilis
+              perspiciatis esse voluptatum placeat blanditiis laboriosam magnam
+              natus rerum optio quo, ad reprehenderit deleniti quis, perferendis
+              vel quibusdam. Magni nesciunt temporibus sint quasi ratione
+              nostrum ex necessitatibus nulla!
+            </p>
+          </div>
+          <div class="tab-content" id="vision">
+            <h4>Vision</h4>
+            <p>
+              Create buttons to open specific tab content. All elements with
+              class="tabcontent" are hidden by default (with CSS & JS). When the
+              user clicks on a button - it will open the tab content that
+              "matches" this button.
+            </p>
+          </div>
+          <div class="tab-content" id="goals">
+            <h4>Goals</h4>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Repudiandae eaque optio cum harum saepe asperiores. Ex maiores,
+              est iure quisquam dolores aut non expedita omnis et. Adipisci
+              ipsam dolores nostrum? Accusantium eveniet cum cumque quam vero
+              quibusdam dignissimos error distinctio inventore, blanditiis
+              repellat veniam omnis asperiores unde sequi? Earum eaque illum
+              cupiditate omnis autem maiores possimus dignissimos asperiores
+              fugit saepe? Doloremque harum laboriosam quae corporis molestias
+              repellat perferendis, tempore ab, inventore esse nam voluptatum
+              officiis minima placeat sunt tempora vitae reiciendis nisi tenetur
+              at sequi praesentium commodi. In, soluta accusantium!
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <script src="./main.js"></script>
+  </body>
+</html>

@@ -527,26 +527,26 @@ getNewTodo("abc")
 // myFunc1();
 
 // vd2 arrow funtion () => {} TH này sẽ lấy this ở phạm vi ngoài gần nhất là Car
-// function Car(name, color) {
-//   this.name = name;
-//   this.color = color;
-// }
+function Car(name, color) {
+  this.name = name;
+  this.color = color;
+}
 // //tạo 1 method "run" bằng prototype
-// Car.prototype.run = function () {
-//   // Context   this
-//   // function test() {
-//   //   console.log(this);  //Window {window: Window, self: Window, document: document, name: '', location: Location, …}
-//   // }
-//   // test();
-//   const test = () => {
-//     console.log(this); // Car {name: 'honda city', color: 'black'} // Car {name: 'bmw 450', color: 'blue'}
-//   };
-//   test();
-// };
-// const honda = new Car("honda city", "black", "450");
-// const bmw = new Car("bmw 450", "blue", "650");
-// honda.run();
-// bmw.run();
+Car.prototype.run = function () {
+  // Context   this
+  function test() {
+    console.log(this); //Window {window: Window, self: Window, document: document, name: '', location: Location, …}
+  }
+  test();
+  const test = () => {
+    console.log(this); // Car {name: 'honda city', color: 'black'} // Car {name: 'bmw 450', color: 'blue'}
+  };
+  test();
+};
+const honda = new Car("honda city", "black", "450");
+const bmw = new Car("bmw 450", "blue", "650");
+honda.run();
+bmw.run();
 
 // // + khi 'this' đứng 1 mình có nghĩa là không ở trong method, hay function nào cả thì nó cũng trỏ tới global obj là window
 // const a = this;

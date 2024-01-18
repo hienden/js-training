@@ -10,7 +10,7 @@ function isPositiveEvenNumber(n) {
 }
 console.log(isPositiveEvenNumber(7));
 
-v2;
+// v2;
 function isPositiveEvenNumber(n) {
   let isValid = false;
   if (n > 0 && n % 2 === 0) {
@@ -20,7 +20,7 @@ function isPositiveEvenNumber(n) {
 }
 console.log(isPositiveEvenNumber(8));
 
-v3;
+// v3;
 function isPositiveEvenNumber(n) {
   if (n > 0 && n % 2 === 0) {
     return true;
@@ -29,7 +29,7 @@ function isPositiveEvenNumber(n) {
 }
 console.log(isPositiveEvenNumber(8));
 
-v4;
+// v4;
 function isPositiveEvenNumber(n) {
   return n > 0 && n % 2 === 0;
 }
