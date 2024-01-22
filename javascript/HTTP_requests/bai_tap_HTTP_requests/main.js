@@ -8,7 +8,7 @@ let currentId = "";
 // "http://localhost:3000/posts"; - api (application program interface)
 // localhost (127.0.0.1) - may ca nhan cua minh
 // :3000 - ung dung quan ly bai viet dang o cong 3000 (port)
-const URL = "http://127.0.0.1:3000/posts"; // sau nay - http://hien.com/posts
+const URL = "http://localhost:3000/posts"; // sau nay - http://hien.com/posts
 
 /**
  * Yeu cau: Tao 1 ung dung quan ly bai viet
@@ -56,7 +56,7 @@ addPostButton.addEventListener("click", function (e) {
     title: title,
     body: desc,
   };
-
+  console.log(currentId);
   currentId
     ? fetch(`${URL}/${currentId}`, {
         method: "PUT",
@@ -67,14 +67,17 @@ addPostButton.addEventListener("click", function (e) {
       })
         .then((res) => res.json())
         .then((data) => {
-          const postItem = document.getElementById(`${currentId}`);
+          console.log(data);
+          const postItem = document.getElementById(currentId);
+          console.log(postItem);
           postItem.querySelector("h4").textContent = data.title;
           postItem.querySelector("p").textContent = data.body;
           // console.log(data);
           titleInputElement.value = " ";
           descInputElement.value = " ";
           addPostButton.textContent = "Add post";
-          currentId = "";
+          console.log(currentId);
+          currentId = false;
         })
     : fetch(URL, {
         method: "POST",
@@ -86,22 +89,31 @@ addPostButton.addEventListener("click", function (e) {
         .then((res) => res.json())
         .then((data) => {
           const post = `<li id="${data.id}">
-          <h4>${data.title}</h4>
-          <p>${data.body}</p>
-          <button onclick="handleDelete('${data.id}')">xoa</button>
-          <button onclick="handleEdit('${data.id}')">sua</button>
-        </li>`;
+            <h4>${data.title}</h4>
+            <p>${data.body}</p>
+            <button onclick="handleDelete('${data.id}')">xoa</button>
+            <button onclick="handleEdit('${data.id}')">sua</button>
+          </li>`;
+          console.log(postListElement);
+          console.log(postListElement.firstElementChild);
+          if (postListElement.firstElementChild) {
+            postListElement.firstElementChild.insertAdjacentHTML(
+              "beforebegin",
+              post
+            );
+          } else {
+            postListElement.innerHTML = post;
+          }
 
-          postListElement.firstElementChild.insertAdjacentHTML(
-            "beforebegin",
-            post
-          );
+          titleInputElement.value = " ";
+          descInputElement.value = " ";
         });
 });
 
 // PUT API: cập nhật 1 BAI VIET CU THE THEO ID
 function handleEdit(id) {
   const postItem = document.getElementById(id);
+  console.log(postItem);
   const title = postItem.querySelector("h4").textContent;
   const desc = postItem.querySelector("p").textContent;
 
