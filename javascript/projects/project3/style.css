@@ -53,3 +53,6 @@ ul {
   border: none;
   background: none;
 }
+.checked {
+  text-decoration: line-through;
+}
