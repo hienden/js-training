@@ -8,7 +8,15 @@ let todos = [];
 let reference = localStorage.getItem("data"); // kiểu JSON
 if (JSON.parse(reference)) {
   const todosElement = JSON.parse(reference).map(function (item) {
-    return `<li class="row"><div><input type="checkbox" onclick="handleChecked('${item}')"/><span>${item.name}</span></div><button type="button" class="delete-task" onclick="handleDelete('${item.id}')"><i class="fa-solid fa-x"></i></button></li>`;
+    return `<li class="row">
+              <div>
+                <input type="checkbox" onclick="handleChecked('${item}')"/>
+                <span>${item.name}</span>
+              </div>
+              <button type="button" class="delete-task" onclick="handleDelete('${item.id}')">
+                <i class="fa-solid fa-x"></i>
+              </button>
+            </li>`;
   });
   taskListElement.innerHTML = todosElement.join("");
 }
@@ -32,7 +40,15 @@ addTaskElement.addEventListener("click", function (e) {
   localStorage.setItem("data", JSON.stringify(todos));
   const todosElement = todos.map(function (item) {
     console.log(item);
-    return `<li class="row"><div><input type="checkbox" onclick="handleChecked('${item}')"/><span>${item.name}</span></div><button type="button" class="delete-task" onclick="handleDelete('${item.id}')"><i class="fa-solid fa-x"></i></button></li>`;
+    return `<li class="row">
+              <div>
+                <input type="checkbox" onclick="handleChecked('${item}')"/>
+                <span>${item.name}</span>
+              </div>
+              <button type="button" class="delete-task" onclick="handleDelete('${item.id}')">
+                <i class="fa-solid fa-x"></i>
+              </button>
+            </li>`;
   });
   taskListElement.innerHTML = todosElement.join("");
   inputTaskElement.value = "";
@@ -47,7 +63,15 @@ function handleDelete(id) {
   });
   localStorage.setItem("data", JSON.stringify(reference));
   const todosElement = reference.map(function (item) {
-    return `<li class="row"><div><input type="checkbox" onclick="handleChecked('${item}')"/><span>${item.name}</span></div><button type="button" class="delete-task" onclick="handleDelete('${item.id}')"><i class="fa-solid fa-x"></i></button></li>`;
+    return `<li class="row">
+              <div>
+                <input type="checkbox" onclick="handleChecked('${item}')"/>
+                <span>${item.name}</span>
+              </div>
+              <button type="button" class="delete-task" onclick="handleDelete('${item.id}')">
+                <i class="fa-solid fa-x"></i>
+              </button>
+            </li>`;
   });
   taskListElement.innerHTML = todosElement.join("");
 }
