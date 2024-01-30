@@ -4,16 +4,16 @@ const taskListElement = document.querySelector(".task-list");
 
 let todos = [];
 
-// Khi có dữ liệu => Lấy dữ liệu render ra màn hình
-let reference = localStorage.getItem("data");
+// Khi có dữ liệu => Lấy dữ liệu và in ra màn hình
+let reference = localStorage.getItem("data"); // kiểu JSON
 if (JSON.parse(reference)) {
   const todosElement = JSON.parse(reference).map(function (item) {
-    return `<li class="row"><div><input type="checkbox" onclick="handleCheck('${item.id}')"/><span>${item.name}</span></div><button type="button" class="delete-task" onclick="handleDelete('${item.id}')"><i class="fa-solid fa-x"></i></button></li>`;
+    return `<li class="row"><div><input type="checkbox" onclick="handleChecked('${item}')"/><span>${item.name}</span></div><button type="button" class="delete-task" onclick="handleDelete('${item.id}')"><i class="fa-solid fa-x"></i></button></li>`;
   });
   taskListElement.innerHTML = todosElement.join("");
 }
 
-// Ấn vào Add => thêm công việc
+// Ấn vào Add => thêm công việc, lưu dữ liệu và in ra màn hình
 addTaskElement.addEventListener("click", function (e) {
   e.preventDefault();
   if (!inputTaskElement.value) {
@@ -23,11 +23,6 @@ addTaskElement.addEventListener("click", function (e) {
   // if (JSON.parse(reference)) {
   //   todos = todos.concat(JSON.parse(reference));
 
-  //   // return todos;
-  //   //JSON.parse(reference) : [1]
-  //   //todos : []
-  //   // concat => todos : [1]
-  // }
   const todo = {
     id: Math.round(Math.random() * 10),
     name: inputTaskElement.value,
@@ -36,7 +31,8 @@ addTaskElement.addEventListener("click", function (e) {
   todos.push(todo);
   localStorage.setItem("data", JSON.stringify(todos));
   const todosElement = todos.map(function (item) {
-    return `<li class="row"><div><input type="checkbox" onclick="handleCheck('${item.id}')"/><span>${item.name}</span></div><button type="button" class="delete-task" onclick="handleDelete('${item.id}')"><i class="fa-solid fa-x"></i></button></li>`;
+    console.log(item);
+    return `<li class="row"><div><input type="checkbox" onclick="handleChecked('${item}')"/><span>${item.name}</span></div><button type="button" class="delete-task" onclick="handleDelete('${item.id}')"><i class="fa-solid fa-x"></i></button></li>`;
   });
   taskListElement.innerHTML = todosElement.join("");
   inputTaskElement.value = "";
@@ -44,18 +40,19 @@ addTaskElement.addEventListener("click", function (e) {
 
 // xóa công việc, cập nhật lại dữ liệu và hiển thị
 function handleDelete(id) {
+  console.log(id);
   let reference = localStorage.getItem("data");
   reference = JSON.parse(reference).filter(function (element) {
     return element.id !== Number(id);
   });
   localStorage.setItem("data", JSON.stringify(reference));
   const todosElement = reference.map(function (item) {
-    return `<li class="row"><div><input type="checkbox" onclick="handleCheck()"/><span>${item.name}</span></div><button type="button" class="delete-task" onclick="handleDelete('${item.id}')"><i class="fa-solid fa-x"></i></button></li>`;
+    return `<li class="row"><div><input type="checkbox" onclick="handleChecked('${item}')"/><span>${item.name}</span></div><button type="button" class="delete-task" onclick="handleDelete('${item.id}')"><i class="fa-solid fa-x"></i></button></li>`;
   });
   taskListElement.innerHTML = todosElement.join("");
 }
 
 // chuyển đổi giá trị hoàn thành và chưa hoàn thành
-function handleCheck(id) {
-  console.log(id);
+function handleChecked(item) {
+  console.log(item); //{id: .. , name: '..', completed: false}
 }
